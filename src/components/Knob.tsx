@@ -41,7 +41,7 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
         const shiftedAngle = (angle - 45) < 0 ? (angle - 45 + 360) : (angle - 45);
         const progress = ((shiftedAngle - 90) / 270) * 100;
         if (isCanva) {
-          setSize(Math.ceil(progress || 1) * 0.01 * Math.min(screenHeight, screenWidth));
+          setSize(Math.ceil(20 + progress * 0.8) * 0.01 * Math.min(screenHeight, screenWidth));
           setProgressToDisplay(Math.ceil(Math.ceil(progress || 1) * 0.01 * Math.min(screenHeight, screenWidth)));
         } else {
           setSize(20 + Math.ceil(progress * 0.8));
@@ -108,7 +108,7 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
 
         const distance = p.dist(mouseX, mouseY, dotX, dotY);
 
-        if (isMobileOrTablet ? distance <= 30 : 10) {
+        if (isMobileOrTablet ? distance <= 30 : distance <= 10) {
           isDragging.current = true;
 
           // Reset momentum timer
@@ -207,9 +207,9 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
   }, [radius, setSize, isCanva, screenHeight, screenWidth, isMobileOrTablet]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-full">
       <div ref={sketchRef}></div>
-      <div className="mt-2 text-center text-gray-100">
+      <div className="mt-2 text-center text-gray-100 w-full">
         {valueName}: {progressToDisplay} px
       </div>
     </div>

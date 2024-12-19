@@ -24,11 +24,11 @@ const Controls: React.FC<ControlsProps> = ({
     <div className="w-screen max-w-4xl md:flex flex-col space-y-4 bg-gray-900 min-h-[250px] h-full max-h-[250px] fixed bottom-0 max-md:hidden">
       <div className="h-full flex items-center justify-around">
         {/* Canvas Size Knob */}
-        <div>
+        <div className='min-w-250px'>
           <label className="block mb-2 text-gray-100 text-center font-bold">
             Canvas Size
           </label>
-          <Knob setSize={setCanvasSize} isCanva={true} valueName="Canvas Size" />
+          <Knob setSize={setCanvasSize} isCanva={true} valueName="Canvas" />
         </div>
 
         {/* Tile Size Knob */}
@@ -36,7 +36,7 @@ const Controls: React.FC<ControlsProps> = ({
           <label className="block mb-2 font-bold text-gray-100 text-center">
             Tile Size
           </label>
-          <Knob setSize={setTileSize} valueName="Tile Size" />
+          <Knob setSize={setTileSize} valueName="Tile" />
         </div>
 
         {/* Toggle Shapes Switch */}
