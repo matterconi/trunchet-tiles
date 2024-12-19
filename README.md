@@ -1,50 +1,95 @@
-# React + TypeScript + Vite
+# Trunchet Tiles
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Trunchet Tiles is an interactive web-based application that allows users to generate customizable geometric patterns using either square or circular tiles. The app is highly adaptable for both desktop and mobile devices, ensuring an optimal user experience across different platforms. The project combines creative coding techniques with user-friendly controls, offering a fun and intuitive interface for experimenting with tile-based designs.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Tile Customization
+- **Canvas Size Adjustment**: Dynamically resize the canvas to fit user preferences or screen dimensions.
+- **Tile Size Adjustment**: Adjust the size of each individual tile for fine-grained control over the layout.
+- **Shape Selection**: Toggle between circular and square tile patterns.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Interactive Controls
+- **Knob Controls**:
+  - Allows precise adjustment of canvas and tile sizes.
+  - Real-time visual feedback as users drag the knob.
+- **Responsive Layout**:
+  - Separate controls for mobile and desktop environments.
+  - Mobile users can easily toggle between settings for canvas size, tile size, and tile shape.
+- **Download Sketch**:
+  - Export the current pattern as a high-quality PNG file.
 
-- Configure the top-level `parserOptions` property like this:
+### Geometric Design
+- Randomized tile patterns with unique types (e.g., triangles for square tiles or arcs for circular tiles).
+- Colorful designs with a palette of predefined colors.
+- Smooth animations and interactions using p5.js for rendering.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Responsive Design
+- **Desktop Controls**: Simpler and more intuitive UI with dedicated sections for each functionality.
+- **Mobile Controls**: Adaptive layout with toggleable menus to maximize usability on smaller screens.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Technologies Used
+- **Frontend Framework**: React.js
+- **Graphics Library**: p5.js
+- **State Management**: React Hooks
+- **Responsive Design**: `react-responsive`
+- **Styling**: Tailwind CSS
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/trunchet-tiles.git
+   cd trunchet-tiles
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+4. Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+## Usage
+1. Use the knob controls to adjust canvas size and tile size.
+2. Toggle between circular and square tiles for different patterns.
+3. Experiment with various combinations and observe real-time updates.
+4. Download your creations as PNG files for future use.
+
+---
+
+## Roadmap
+- Add additional tile shapes.
+- Include the ability to define custom color palettes.
+- Implement saving/loading feature for design configurations.
+- Enhance performance for larger canvas sizes.
+
+---
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+## Acknowledgments
+Special thanks to the contributors and libraries that made this project possible:
+- **p5.js** for its powerful and flexible drawing capabilities.
+- **React** for managing the UI efficiently.
+- **Tailwind CSS** for rapid styling.
+
+---
+
+Feel free to explore and contribute to Trunchet Tiles!
