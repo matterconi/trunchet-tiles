@@ -21,7 +21,7 @@ const Controls: React.FC<ControlsProps> = ({
   };
 
   return (
-    <div className="w-screen max-w-screen md:flex flex-col space-y-4 bg-gray-900 min-h-[250px] h-full max-h-[250px] fixed bottom-0 max-md:hidden">
+    <div className="w-screen max-w-4xl md:flex flex-col space-y-4 bg-gray-900 min-h-[250px] h-full max-h-[250px] fixed bottom-0 max-md:hidden">
       <div className="h-full flex items-center justify-around">
         {/* Canvas Size Knob */}
         <div>

@@ -24,8 +24,8 @@ const SketchSquare: React.FC<SketchProps> = ({ canvasSize, tileSize, backgroundC
 
       p.setup = () => {
         p.createCanvas(canvasSize, canvasSize).parent(sketchRef.current!);
-        cols = Math.floor(p.width / tileSize);
-        rows = Math.floor(p.height / tileSize);
+        cols = p.width / tileSize;
+        rows = p.height / tileSize;
 
         // Populate the tiles array
         for (let i = 0; i < cols; i++) {

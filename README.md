@@ -45,7 +45,7 @@ Trunchet Tiles is an interactive web-based application that allows users to gene
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/trunchet-tiles.git
+   git clone https://github.com/matterconi/trunchet-tiles.git
    cd trunchet-tiles
    ```
 
@@ -59,7 +59,7 @@ Trunchet Tiles is an interactive web-based application that allows users to gene
    npm start
    ```
 
-4. Open your browser and navigate to `http://localhost:3000`.
+4. Open your browser and navigate to `http://localhost:5173`.
 
 ---
 

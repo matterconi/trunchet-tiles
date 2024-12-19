@@ -24,11 +24,11 @@ function App() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-900">
-      <h1 className="text-4xl text-gray-100 font-bold absolute top-0 min-h-[100px] max-h-[100px] h-full flex items-center">
+      <h1 className="text-4xl text-gray-100 font-bold fixed top-0 min-h-[100px] h-[100px] max-h-[100px] flex items-center">
         Trunchet Tiles
       </h1>
 
-      <div className="flex justify-center items-center h-[calc(100vh-350px)] fixed top-[100px] w-screen">
+      <div className="flex justify-center items-center h-[calc(100vh-350px)] fixed top-[100px] w-screen rounded-b-md">
         {isCircles ? (
           <SketchCircle
             canvasSize={canvasSize}

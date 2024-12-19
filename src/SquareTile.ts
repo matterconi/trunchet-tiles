@@ -13,6 +13,8 @@ class Tile {
     display() {
         const p = this.p;
         const size = this.size;
+
+        
         p.fill(this.color);
         p.noStroke();
         p.beginShape();

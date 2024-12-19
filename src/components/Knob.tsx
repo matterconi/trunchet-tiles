@@ -18,8 +18,8 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
   const momentumTimer = useRef<NodeJS.Timeout | null>(null); // Timer reference for momentum
   const progressRef = useRef(0);
 
-  const screenWidth = window.innerWidth; // Use innerWidth for the viewport width
-  const screenHeight = window.innerHeight - 350; // Subtract fixed control height
+  const screenWidth = window.innerWidth - 50; // Use innerWidth for the viewport width
+  const screenHeight = window.innerHeight - 450; // Subtract fixed control height
 
   useEffect(() => {
     const sketch = (p: p5) => {
@@ -166,6 +166,31 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
         if (activeEdge.current) return;
 
         angleRef.current = currentAngle; // Update angle
+      };
+
+      p.mousePressed = () => {
+        const dx = p.mouseX - centerX; // Relative x position
+        const dy = p.mouseY - centerY; // Relative y position
+        
+        console.log(`Mouse Pressed: ${dx}, ${dy}`);
+        // Check if the click is inside the circle
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance >= radius - 10 && distance <= radius + 10) {
+          // Calculate the angle in degrees
+          const angle = (Math.atan2(dy, dx) * 180) / Math.PI; // atan2 expects relative coordinates
+          const currentAngle = (angle + 360) % 360; // Normalize angle to 0-360 degrees
+      
+          // Shift the angle by -45 degrees for alignment
+          const shiftedAngle = (currentAngle - 45 + 360) % 360;
+      
+          // Optional: Restrict to a specific range if needed
+          if ( shiftedAngle >= 90) {
+            angleRef.current = currentAngle;
+            console.log(`Angle Set: ${currentAngle}`);
+          } else {
+            console.log(`Click ignored: ${currentAngle} out of range.`);
+          }
+        }
       };
 
       p.mouseReleased = () => {

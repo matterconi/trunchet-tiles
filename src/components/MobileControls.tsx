@@ -23,10 +23,10 @@ const Controls: React.FC<ControlsProps> = ({
   };
 
   return (
-    <div className="w-screen max-w-screen flex-col space-y-4 bg-navy-900 min-h-[250px] h-full max-h-[250px] fixed bottom-0 sm:hidden">
+    <div className="w-screen max-w-screen flex-col space-y-4 min-h-[250px] h-full max-h-[250px] fixed bottom-0 sm:hidden rounded-b-md">
 
       {/* Control Panel Above the Menu */}
-      <div className="flex flex-col items-center justify-around py-4">
+      <div className="flex flex-col items-center justify-around py-4 h-full">
 
           <div className={`${activeControl === 'canvas' ? 'block' : 'hidden'}`}>
             <label className="block mb-2 text-gray-100 text-center font-bold">Canvas Size</label>
@@ -39,23 +39,26 @@ const Controls: React.FC<ControlsProps> = ({
             <Knob setSize={setTileSize} valueName="Tile Size" />
           </div>
 
-          <div className="flex flex-col items-center space-y-4">
+          <div className={`${activeControl === 'toggle' ? 'flex justify-around items-center h-full w-full' : 'hidden'}`}>
             {/* Toggle Shapes */}
-            <div className={`${activeControl === 'toggle' ? 'block' : 'hidden'}`}>              <label className="block mb-2 font-bold text-gray-100 text-center">Toggle Shapes</label>
-              <div
-                onClick={toggleShapes}
-                className={`relative w-14 h-8 rounded-full cursor-pointer transition ${
-                  isCircles ? 'bg-blue-500' : 'bg-green-500'
-                }`}
-              >
-                <div
-                  className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-md transition-transform ${
-                    isCircles ? 'translate-x-0' : 'translate-x-6'
-                  }`}
-                ></div>
+              <div>
+                <label className="block mb-2 font-bold text-gray-100 text-center">Toggle Shapes</label>
+                    <div
+                      onClick={toggleShapes}
+                      className={`relative w-14 h-8 rounded-full cursor-pointer transition ${
+                        isCircles ? 'bg-blue-500' : 'bg-green-500'
+                      }`}
+                    >
+                      <div
+                        className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-md transition-transform ${
+                          isCircles ? 'translate-x-0' : 'translate-x-6'
+                        }`}
+                      >
+
+                    </div>
+                  </div>
+                <p className="text-sm text-gray-300 mt-1">{isCircles ? 'Circles' : 'Squares'}</p>
               </div>
-              <p className="text-sm text-gray-300 mt-1">{isCircles ? 'Circles' : 'Squares'}</p>
-            </div>
 
             {/* Download Button */}
             <div>
@@ -69,7 +72,7 @@ const Controls: React.FC<ControlsProps> = ({
           </div>
       </div>
             {/* Tab Menu at the Bottom */}
-            <div className="flex justify-around bg-blue-300 text-gray-100 py-2 fixed bottom-0 w-screen">
+            <div className="flex justify-around bg-blue-300 text-gray-100 py-2 fixed bottom-0 w-screen rounded-b-md">
         <button
           onClick={() => setActiveControl('canvas')}
           className={`px-4 py-2 rounded-md ${
