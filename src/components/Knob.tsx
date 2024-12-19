@@ -176,7 +176,6 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
         const dx = p.mouseX - centerX; // Relative x position
         const dy = p.mouseY - centerY; // Relative y position
         
-        console.log(`Mouse Pressed: ${dx}, ${dy}`);
         // Check if the click is inside the circle
         const distance = Math.sqrt(dx * dx + dy * dy);
         if (distance >= radius - 10 && distance <= radius + 10) {
@@ -190,9 +189,8 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
           // Optional: Restrict to a specific range if needed
           if ( shiftedAngle >= 90) {
             angleRef.current = currentAngle;
-            console.log(`Angle Set: ${currentAngle}`);
           } else {
-            console.log(`Click ignored: ${currentAngle} out of range.`);
+            return;
           }
         }
       };
