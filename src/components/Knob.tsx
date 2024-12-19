@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import p5 from 'p5';
 
 interface KnobProps {
@@ -20,6 +21,9 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
 
   const screenWidth = window.innerWidth - 50; // Use innerWidth for the viewport width
   const screenHeight = window.innerHeight - 450; // Subtract fixed control height
+
+  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+
 
   useEffect(() => {
     const sketch = (p: p5) => {
@@ -104,7 +108,7 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
 
         const distance = p.dist(mouseX, mouseY, dotX, dotY);
 
-        if (distance <= 10) {
+        if (isMobileOrTablet ? distance <= 30 : 10) {
           isDragging.current = true;
 
           // Reset momentum timer
@@ -202,7 +206,7 @@ const Knob: React.FC<KnobProps> = ({ radius = 50, valueName = 'Angle', setSize, 
     const p5Instance = new p5(sketch);
 
     return () => p5Instance.remove(); // Cleanup on unmount
-  }, [radius, setSize, isCanva, screenHeight, screenWidth]);
+  }, [radius, setSize, isCanva, screenHeight, screenWidth, isMobileOrTablet]);
 
   return (
     <div className="flex flex-col items-center justify-center">

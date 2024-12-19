@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import './App.css';
 import SketchSquare from './components/SketchSquare';
@@ -22,13 +22,24 @@ function App() {
     setDownloadCallback(() => callback); // Avoids setting a new function reference on every render
   }, []);
 
+  useEffect(() => {
+    const setViewportHeight = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+  
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
+  
+    return () => window.removeEventListener('resize', setViewportHeight);
+  }, []);  
+
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-900">
-      <h1 className="text-4xl text-gray-100 font-bold fixed top-0 min-h-[100px] h-[100px] max-h-[100px] flex items-center">
+    <div className="w-screen h-screen-dynamic flex flex-col items-center justify-center bg-gray-900">
+      <h1 className="text-4xl text-gray-100 font-bold fixed top-[50px] min-h-[100px] h-[100px] max-h-[100px] flex items-center">
         Trunchet Tiles
       </h1>
 
-      <div className="flex justify-center items-center h-[calc(100vh-350px)] fixed top-[100px] w-screen rounded-b-md">
+      <div className="flex justify-center items-center w-screen relative top-[-50px]">
         {isCircles ? (
           <SketchCircle
             canvasSize={canvasSize}
