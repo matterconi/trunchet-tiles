@@ -34,7 +34,7 @@ function App() {
   }, []);  
 
   return (
-    <div className="w-screen h-screen-dynamic flex flex-col items-center justify-center bg-gray-900">
+    <div className="w-screen h-screen-dynamic flex flex-col items-center justify-center bg-gray-900 overflow-hidden">
       <h1 className="text-4xl text-gray-100 font-bold fixed top-[50px] min-h-[100px] h-[100px] max-h-[100px] flex items-center">
         Trunchet Tiles
       </h1>
